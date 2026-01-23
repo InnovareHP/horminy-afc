@@ -1,11 +1,48 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Hero from '../components/sections/Hero.astro';
+import Welcome from '../components/sections/Welcome.astro';
+import AboutUs from '../components/sections/AboutUs.astro';
+import Services from '../components/sections/Services.astro';
+import OurHome from '../components/sections/OurHome.astro';
+import ContactUs from '../components/sections/ContactUs.astro';
 ---
 
-<Layout>
-	<Welcome />
+<Layout 
+	title="Horminy Adult Foster Care Home | Wyoming, Michigan"
+	description="Horminy Adult Foster Care Home provides compassionate, personalized care in Wyoming, Michigan. Experience our comfortable living areas, beautifully landscaped grounds, and engaging activities designed to promote well-being."
+>
+	<main>
+		<Hero />
+		<Welcome />
+		<AboutUs />
+		<Services />
+		<OurHome />
+		<!-- House Image - Full Width -->
+		<div class="w-full">
+			<img 
+				src="/images/ourhome-section/home.png" 
+				alt="Horminy Adult Foster Care Home exterior showing the beautiful single-story residential house with landscaped grounds" 
+				class="w-full h-auto object-cover max-h-[30vh]"
+				loading="lazy"
+				width="1920"
+				height="1080"
+			/>
+		</div>
+		<!-- House Video - Full Width -->
+		<div class="w-full">
+			<video 
+				src="/images/ourhome-section/home-vid.mp4" 
+				class="w-full h-auto object-cover max-h-[30vh]"
+				autoplay
+				loop
+				muted
+				playsinline
+				preload="metadata"
+				poster="/images/ourhome-section/home.png"
+				aria-label="Video tour of Horminy Adult Foster Care Home"
+			></video>
+		</div>
+		<ContactUs />
+	</main>
 </Layout>

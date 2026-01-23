@@ -1,13 +1,73 @@
+---
+import Navbar from '../components/sections/Navbar.astro';
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { 
+	title = 'Horminy Adult Foster Care Home',
+	description = 'Horminy Adult Foster Care Home in Wyoming, Michigan provides compassionate, personalized care in a warm and nurturing environment. Schedule a tour today.'
+} = Astro.props;
+
+const siteUrl = 'https://horminy.com';
+const siteName = 'Horminy Adult Foster Care Home';
+---
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/horminy.png" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		
+		<!-- Primary Meta Tags -->
+		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+		<meta name="keywords" content="adult foster care, Wyoming Michigan, assisted living, senior care, Horminy" />
+		<meta name="author" content={siteName} />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={siteUrl} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={`${siteUrl}/images/hero-section/horminy-logo.png`} />
+		<meta property="og:site_name" content={siteName} />
+		
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={siteUrl} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={`${siteUrl}/images/hero-section/horminy-logo.png`} />
+		
+		<!-- Structured Data -->
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "LocalBusiness",
+			"name": siteName,
+			"image": `${siteUrl}/images/hero-section/horminy-logo.png`,
+			"description": description,
+			"address": {
+				"@type": "PostalAddress",
+				"streetAddress": "2091 Palm Dale Drive SW",
+				"addressLocality": "Wyoming",
+				"addressRegion": "MI",
+				"postalCode": "49519",
+				"addressCountry": "US"
+			},
+			"telephone": "(616) 275-0366",
+			"email": "kamanzi@horminy.com",
+			"url": siteUrl,
+			"priceRange": "$$"
+		})} />
 	</head>
 	<body>
+		<Navbar />
 		<slot />
 	</body>
 </html>

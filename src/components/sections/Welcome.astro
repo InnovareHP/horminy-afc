@@ -1,0 +1,37 @@
+---
+import Button from '../Button.astro';
+---
+
+<section class="w-full bg-[#823d13] pt-8 md:pt-16 pb-2 md:pb-6 px-4 md:px-8">
+	<div class="max-w-7xl mx-auto relative">
+		<div class="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+			<!-- Left Side - Text Content -->
+			<div class="relative z-10">
+				<h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+					<span class="whitespace-nowrap">Adult Foster Care Home</span> 
+					<span class="whitespace-nowrap">in Wyoming, Michigan</span>
+				</h1>
+				<p class="text-lg md:text-xl text-[#D4C4A8] leading-relaxed mb-8 max-w-[46.2rem]">
+					Step into a place where warmth meets care, where every smile is genuine, and every need is met with compassion. Welcome to Horminy Adult Foster Care Home, your haven of comfort and support nestled in the heart of Wyoming, Michigan. Our home is designed to provide a cozy, nurturing environment where residents can thrive and feel truly at ease.
+				</p>
+			</div>
+
+			<!-- Right Side - Leaf Graphic -->
+			<div class="relative md:absolute md:right-0 md:top-16 md:bottom-auto md:w-1/2 md:h-full flex items-end justify-end z-0 mb-8">
+				<img 
+					src="/images/welcome-section/leaf.svg" 
+					alt="Decorative leaf illustration" 
+					class="w-full h-auto max-w-[28rem] md:max-w-[33rem] lg:max-w-[39rem] opacity-80"
+					loading="lazy"
+					width="624"
+					height="800"
+				/>
+			</div>
+		</div>
+
+		<!-- Inquire Now Button - Bottom Right -->
+		<div class="flex justify-end mt-8 md:mt-0 md:absolute md:bottom-8 md:right-8 z-20">
+			<Button text="INQUIRE NOW" variant="primary" />
+		</div>
+	</div>
+</section>

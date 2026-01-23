@@ -1,0 +1,55 @@
+---
+import Button from "../Button.astro";
+
+---
+
+<section class="w-full bg-[#fff8ed] pt-12 md:pt-20 pb-0 px-4 md:px-8 relative z-50 overflow-hidden">
+	<div class="max-w-7xl mx-auto relative">
+		<div class="grid md:grid-cols-2 gap-8 md:gap-12 items-stretch">
+			<!-- Left Side - Woman Image with Plant Decoration -->
+			<div class="order-2 md:order-1 relative w-full h-[500px] md:h-[700px] lg:h-[800px] min-h-full">
+				<!-- Plant SVG - Decorative Background Element -->
+				<div class="absolute inset-0 flex items-center justify-center z-0">
+					<img 
+						src="/images/about-section/plant.svg" 
+						alt="Decorative plant illustration" 
+						class="w-full max-w-[600px] md:max-w-[700px] lg:max-w-[800px] h-auto object-contain"
+						loading="lazy"
+						width="735"
+						height="800"
+					/>
+				</div>
+				<div class="absolute inset-0 w-full h-full z-10 flex items-end">
+					<img 
+						src="/images/about-section/woman.png" 
+						alt="Compassionate care provider at Horminy Adult Foster Care Home" 
+						class="w-full h-full object-contain object-bottom rounded-lg"
+						loading="lazy"
+						width="800"
+						height="1200"
+					/>
+				</div>
+			</div>
+
+			<!-- Right Side - Text Content -->
+			<div class="order-1 md:order-2 relative">
+				<!-- Text Content -->
+				<div class="relative z-10">
+					<h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#823d13] mb-4">
+						About Us
+					</h1>
+					<h1 class="text-4xl md:text-5xl lg:text-6xl text-[#823d13] mb-4">
+						Take the first step on ​your wellness journey.
+					</h1>
+					<p class="text-xl md:text-2xl text-[#7d5d02] leading-relaxed mb-8">
+						At Horminy, we believe in the power of home and family. ​Our dedicated team is committed to providing exceptional ​care tailored to the unique needs of each individual. With ​years of experience and a genuine passion for what we ​do, we strive to create a welcoming atmosphere where ​residents can maintain their independence while receiving ​the support they deserve.
+					</p>
+					<!-- Button -->
+					<div class="flex mt-8">
+						<Button text="INQUIRE NOW" variant="primary" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
