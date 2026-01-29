@@ -1,22 +1,23 @@
 ---
 const navItems = [
-	{ name: 'Home', href: '/' },
-	{ name: 'About Us', href: '/about' },
-	{ name: 'Our Services', href: '/services' },
-	{ name: 'Our Home', href: '/home' },
-	{ name: 'Contact Us', href: '/contact' },
+	{ name: 'Home', href: '#home' },
+	{ name: 'About Us', href: '#about' },
+	{ name: 'Our Services', href: '#services' },
+	{ name: 'Our Home', href: '#ourhome' },
+	{ name: 'Contact Us', href: '#contact' },
 ];
 ---
 
-<nav class="w-full bg-[#733D1A] py-4 relative">
+<nav class="w-full bg-[#733D1A] py-4 fixed top-0 left-0 right-0 z-[100]">
 	<div class="flex justify-end items-center px-8 md:px-4">
 		<!-- Desktop Navigation -->
 		<ul class="hidden md:flex justify-end items-center list-none m-0 gap-8">
-			{navItems.map((item) => (
+				{navItems.map((item) => (
 				<li class="m-0">
 					<a 
 						href={item.href}
-						class="text-white no-underline font-bold text-base font-[Arial,sans-serif] transition-colors duration-300 hover:text-[#4a4a4a]"
+						class="text-white no-underline font-bold text-base font-[Arial,sans-serif] transition-colors duration-300 hover:text-[#b0b0b0] cursor-pointer"
+						data-nav-link
 					>
 						{item.name}
 					</a>
@@ -49,7 +50,7 @@ const navItems = [
 	<!-- Sliding Menu Panel (Mobile) -->
 	<div 
 		id="mobile-menu"
-		class="fixed top-0 right-0 h-full w-80 bg-[#733D1A] transform translate-x-full transition-transform duration-300 ease-in-out z-50 md:hidden"
+		class="fixed top-0 right-0 h-full w-80 bg-[#733D1A] transform translate-x-full transition-transform duration-300 ease-in-out z-[100] md:hidden"
 	>
 		<div class="flex flex-col h-full">
 			<!-- Close Button -->
@@ -81,7 +82,7 @@ const navItems = [
 					<li>
 						<a 
 							href={item.href}
-							class="text-white no-underline font-bold text-lg font-[Arial,sans-serif] transition-colors duration-300 hover:text-[#4a4a4a] block py-2"
+							class="text-white no-underline font-bold text-lg font-[Arial,sans-serif] transition-colors duration-300 hover:text-[#b0b0b0] block py-2"
 							data-nav-link
 						>
 							{item.name}
@@ -95,7 +96,7 @@ const navItems = [
 	<!-- Overlay (Mobile) -->
 	<div 
 		id="menu-overlay"
-		class="fixed inset-0 bg-white bg-opacity-30 opacity-0 invisible transition-opacity duration-300 z-40 md:hidden"
+		class="fixed inset-0 bg-white bg-opacity-30 opacity-0 invisible transition-opacity duration-300 z-[90] md:hidden"
 	></div>
 </nav>
 
@@ -104,7 +105,6 @@ const navItems = [
 	const closeBtn = document.getElementById('close-btn');
 	const mobileMenu = document.getElementById('mobile-menu');
 	const menuOverlay = document.getElementById('menu-overlay');
-	const navLinks = document.querySelectorAll('[data-nav-link]');
 
 	function openMenu() {
 		mobileMenu?.classList.remove('translate-x-full');
@@ -124,9 +124,36 @@ const navItems = [
 	closeBtn?.addEventListener('click', closeMenu);
 	menuOverlay?.addEventListener('click', closeMenu);
 
-	// Close menu when clicking on nav links
-	navLinks.forEach(link => {
-		link.addEventListener('click', closeMenu);
+	// Handle navigation link clicks (both desktop and mobile)
+	const allNavLinks = document.querySelectorAll('[data-nav-link]');
+	
+	allNavLinks.forEach(link => {
+		link.addEventListener('click', (e) => {
+			const href = link.getAttribute('href');
+			// Only handle anchor links
+			if (href && href.startsWith('#')) {
+				e.preventDefault();
+				const targetId = href.substring(1);
+				const targetElement = document.getElementById(targetId);
+				
+				if (targetElement) {
+					// Close mobile menu if open
+					closeMenu();
+					
+					// Smooth scroll to target
+					const navHeight = document.querySelector('nav')?.offsetHeight || 0;
+					const targetPosition = targetElement.offsetTop - navHeight;
+					
+					window.scrollTo({
+						top: targetPosition,
+						behavior: 'smooth'
+					});
+				}
+			} else {
+				// For non-anchor links, just close menu
+				closeMenu();
+			}
+		});
 	});
 
 	// Close menu on escape key
